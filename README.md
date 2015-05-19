@@ -4,4 +4,4 @@
 
 Проект к вебинару http://javawebinar.ru/topjava/
 
-Демо разрабатываемого приложения: http://caloriesmng.herokuapp.com/
+Демо разрабатываемого приложения: http://topjava.herokuapp.com/
