@@ -11,7 +11,7 @@
     <div class="${cssGroup}">
         <label class="control-label col-xs-2">${label}</label>
 
-        <div class="col-xs-5">
+        <div class="col-xs-8">
             <c:choose>
                 <c:when test="${inputType == 'password'}"><form:password path="${name}"/></c:when>
                 <c:otherwise><form:input path="${name}"/></c:otherwise>

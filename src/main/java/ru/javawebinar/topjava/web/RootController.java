@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,13 +82,16 @@ public class RootController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String saveRegister(@Valid UserTo userTo, BindingResult result, SessionStatus status, ModelMap model) {
-        if (result.hasErrors()) {
-            model.addAttribute("register", true);
-            return "profile";
-        } else {
-            status.setComplete();
-            userService.save(UserUtil.createFromTo(userTo));
-            return "redirect:login?message=app.registered";
+        if (!result.hasErrors()) {
+            try {
+                userService.save(UserUtil.createFromTo(userTo));
+                status.setComplete();
+                return "redirect:login?message=app.registered";
+            } catch (DataIntegrityViolationException ex) {
+                result.rejectValue("email", "error.user", "User with this email already present in application.");
+            }
         }
+        model.addAttribute("register", true);
+        return "profile";
     }
 }
