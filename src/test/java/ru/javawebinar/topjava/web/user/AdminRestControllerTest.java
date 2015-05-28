@@ -110,7 +110,8 @@ public class AdminRestControllerTest extends WebTest {
 
     @Test
     public void testGetAll() throws Exception {
-        TestUtil.print(mockMvc.perform(get(REST_URL).contentType(MediaType.APPLICATION_JSON)
+        TestUtil.print(mockMvc.perform(get(REST_URL)
+                .contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
