@@ -2,7 +2,14 @@ package ru.javawebinar.topjava.model;
 
 import ru.javawebinar.topjava.LoggerWrapper;
 
-import javax.persistence.*;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.SequenceGenerator;
+import java.io.Serializable;
 
 /**
  * User: gkislin
@@ -11,7 +18,7 @@ import javax.persistence.*;
 @MappedSuperclass
 @Access(AccessType.FIELD)
 //@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, isGetterVisibility = NONE, setterVisibility = NONE)
-public class BaseEntity {
+public class BaseEntity implements Serializable{
     protected static final LoggerWrapper LOG = LoggerWrapper.get(BaseEntity.class);
 
     public static final int START_SEQ = 100000;
