@@ -58,6 +58,7 @@
             <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
             <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
             <property name="driverClassName" value="org.postgresql.Driver"/>
+            <property name="validationQuery" value="SELECT 1 FROM users"/>
         </bean>
     </beans>
 
