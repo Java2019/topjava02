@@ -1,6 +1,6 @@
 var form;
 
-function makeEditable(ajaxUrl) {
+function makeEditable() {
     form = $('#detailsForm');
 
     $('#add').click(function () {
@@ -33,6 +33,7 @@ function makeEditable(ajaxUrl) {
     $(document).ajaxSend(function(e, xhr, options) {
         xhr.setRequestHeader(header, token);
     });
+
     init();
 }
 
